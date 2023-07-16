@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+    {% for el in object_list %}
+    <li><a href=""></a>{{ el.model }}{{ el.year }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

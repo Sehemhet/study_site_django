@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+    {% autoescape off %}
+    <li>{{ brand }}</li>
+    {% endautoescape %}
+    <li>{{ model }}</li>
+    {% comment %}
+    <li>{{ country }}</li>
+    у меня злдесь всего намудрено
+    следует рассмотреть Васе третьему
+    {% endcomment %}
+
+    {% with res1='It will work' res2="text" %}
+        <p>
+            4-2={{ res1|cut:"work" }} {{ res2|capfirst|add:" добавленый текст" }} {{ country|add:" / фурычит" }}
+        </p>
+        {% now "Y F j P" %}<br>
+        {% now "D, d, M Y H:i W" %}<br>
+        {% now "r" %}
+    {% endwith %}
+        {% for el in model %}
+            <li>{{ el }}</li>{% empty %}
+        {% endfor %}
+    <li>{{ errror|default_if_none:"data none" }}</li>
+    <li>{{ one|floatformat:1 }}</li>
+    <li>{{ two|floatformat:3 }}</li>
+    <li>{{ three|floatformat:5 }}</li>
+    <li>{{ four|floatformat:"g" }}</li> <!-- раставляет пробелы по разрядам-->
+    <li>{{ four|floatformat:"u" }}</li> <!-- форматирует без пробелов -->
+    <li>{{ now|date:"Y F j H:i" }}</li>  <span>HERE</span>        <!-- форматируем дату -->
+    <li>{{ four }}</li>
+    <li>{{ five|floatformat:"-2" }}</li> <!-- убирает указанное колличество элементов после запятой и убирает нули-->
+    <li>{{ text_str|join:" ..!.. " }}</li>
+    <li>{{ text_str1|join:" O_o " }}</li>
+    <li>{{ text_str1|slice:"0::2"|join:" "|length }}</li> <!-- slice срез в шаблоне (от,до,шаг), join добавляет разделитель между элементами, length подсчитывает колличество используемых элементов  -->
+
+
+<!--    <ul>-->
+<!--        <li><p></p></li>-->
+<!--        <li><p></p></li>-->
+<!--        <li><p></p></li>-->
+<!--        <li><p></p></li>-->
+<!--        <li><p></p></li>-->
+<!--    </ul>-->
+
+
+</ul>
+
+{% endblock %}
+
